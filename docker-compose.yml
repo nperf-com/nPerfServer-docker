@@ -1,0 +1,21 @@
+name: nperf-server
+services:
+  nperf-server:
+    build: .
+    container_name: nperf-server
+    env_file:
+      - path: ./nperf-server.env
+        required: false
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:8080"
+      - "443:8443"
+      - "8080:8080"
+      - "8081:8080"
+      - "8443:8443"
+    volumes:
+      - data:/var/lib/nPerfServer
+volumes:
+  data:
+
